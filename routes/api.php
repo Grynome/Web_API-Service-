@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MVController;
 use App\Http\Controllers\GenresController;
 use App\Http\Controllers\MGController;
+use App\Http\Controllers\API\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::get('/data-movies', [MVController::class, 'index']);
     // Store
     Route::post('store/data-movies', [MVController::class, 'store']);
     // Update
-    Route::patch('patch/data-movies/{id}', [MVController::class, 'update']);
+    Route::put('patch/data-movies/{id}', [MVController::class, 'update']);
     // Delete
     Route::delete('destroy/data-movies/{id}', [MVController::class, 'destroy']);
 // Store in 2 Table

@@ -1,0 +1,477 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dokumentasi API",
+        "description": "Web API (Services)",
+        "contact": {
+            "email": "grynome@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/WebAPI/public/api/",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/movies": {
+            "get": {
+                "tags": [
+                    "List Movie"
+                ],
+                "summary": "Get All Data from Movie",
+                "description": "Retrieve information about movies with genres",
+                "operationId": "c7d1e5a05d4d56f6bd5e7170c9f8b28b",
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "mov_id": {
+                                                "type": "integer"
+                                            },
+                                            "judul": {
+                                                "type": "string"
+                                            },
+                                            "Genre": {
+                                                "type": "string"
+                                            },
+                                            "release_date": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "producer": {
+                                                "type": "string"
+                                            },
+                                            "rating": {
+                                                "type": "decimal"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/data-movies/search": {
+            "get": {
+                "tags": [
+                    "Get With Params"
+                ],
+                "summary": "Search for movies",
+                "description": "Search for movies based on the provided keyword",
+                "operationId": "1dfe91a7c182da0899f26a90e798d3cb",
+                "parameters": [
+                    {
+                        "name": "keyword",
+                        "in": "query",
+                        "description": "Keyword to search for",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "mov_id": {
+                                                "type": "integer"
+                                            },
+                                            "judul": {
+                                                "type": "string"
+                                            },
+                                            "release_date": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "producer": {
+                                                "type": "string"
+                                            },
+                                            "rating": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/store/data-movies": {
+            "post": {
+                "tags": [
+                    "Store Data Movie"
+                ],
+                "summary": "Create a new movie",
+                "description": "Create a new movie record",
+                "operationId": "9ee0aa2bda0b7ece61974e99f0392258",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "judul": {
+                                        "type": "string"
+                                    },
+                                    "release_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "producer": {
+                                        "type": "string"
+                                    },
+                                    "rating": {
+                                        "type": "decimal"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Movie created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "mov_id": {
+                                            "type": "integer"
+                                        },
+                                        "judul": {
+                                            "type": "string"
+                                        },
+                                        "release_date": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "producer": {
+                                            "type": "string"
+                                        },
+                                        "rating": {
+                                            "type": "decimal"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/store/multiple": {
+            "post": {
+                "tags": [
+                    "Store 2 Table"
+                ],
+                "summary": "Create a new movie and genre",
+                "description": "Create a new movie record and a new genre record",
+                "operationId": "e6ec46f0a9f893a9cc2d74dbdd7f0bd7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "movies": {
+                                        "properties": {
+                                            "judul": {
+                                                "type": "string"
+                                            },
+                                            "release_date": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "producer": {
+                                                "type": "string"
+                                            },
+                                            "rating": {
+                                                "type": "decimal",
+                                                "maximum": 10,
+                                                "minimum": 1.1
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "genres": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Movie and genre created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "movies": {
+                                            "type": "object"
+                                        },
+                                        "genres": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/patch/data-movies/{id}": {
+            "put": {
+                "tags": [
+                    "Update with Params"
+                ],
+                "summary": "Update a movie",
+                "description": "Update an existing movie record",
+                "operationId": "b00f9397432ce388405f4ec64a44d4cd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the movie to update",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "judul": {
+                                        "type": "string"
+                                    },
+                                    "release_date": {
+                                        "type": "string",
+                                        "format": "date"
+                                    },
+                                    "producer": {
+                                        "type": "string"
+                                    },
+                                    "rating": {
+                                        "type": "decimal"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Movie updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "mov_id": {
+                                            "type": "integer"
+                                        },
+                                        "judul": {
+                                            "type": "string"
+                                        },
+                                        "release_date": {
+                                            "type": "string",
+                                            "format": "date"
+                                        },
+                                        "producer": {
+                                            "type": "string"
+                                        },
+                                        "rating": {
+                                            "type": "decimal"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/destroy/data-movies/{id}": {
+            "delete": {
+                "tags": [
+                    "Delete with Params"
+                ],
+                "summary": "Delete a movie",
+                "description": "Delete an existing movie record",
+                "operationId": "21de5dd4438c34f69e83c25e013a321b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the movie to delete",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Movie deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

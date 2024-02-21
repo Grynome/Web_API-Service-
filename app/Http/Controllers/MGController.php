@@ -9,6 +9,35 @@ use DB;
 
 class MGController extends Controller
 {
+    
+    /**
+     * @OA\Get(
+     *     path="/movies",
+     *     tags={"List Movie"},
+     *     summary="Get All Data from Movie",
+     *     description="Retrieve information about movies with genres",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful response",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(
+     *                 type="object",
+     *                 @OA\Property(property="mov_id", type="integer"),
+     *                 @OA\Property(property="judul", type="string"),
+     *                 @OA\Property(property="Genre", type="string"),
+     *                 @OA\Property(property="release_date", type="date"),
+     *                 @OA\Property(property="producer", type="string"),
+     *                 @OA\Property(property="rating", type="decimal"),
+     *             ),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response=404,
+     *         description="Not Found",
+     *     ),
+     * )
+     */
     public function view()
     {
         $sub = DB::table('list_movie as m')
