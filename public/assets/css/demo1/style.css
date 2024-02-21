@@ -25427,6 +25427,15 @@ div.tox .btn-group-lg>.btn-icon-text.tox-button .btn-icon-append,
     color: #fff;
 }
 
+.btn-outline-api-docs {
+    border: 1px solid #181717;
+    color: #181717;
+}
+
+.btn-outline-api-docs:hover {
+    background: #181717;
+    color: #fff;
+}
 .btn-instagram {
     background: #e4405f;
     color: #fff;

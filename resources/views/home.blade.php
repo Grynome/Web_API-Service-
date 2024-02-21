@@ -13,12 +13,19 @@
                 <div class="tab-content mt-3">
                     <div class="tab-pane fade show active" id="linktree" role="tabpanel" aria-labelledby="home-line-tab">
                         <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-                            <div class="btn-group me-2" role="group" aria-label="First group">
+                            <div class="btn-group" role="group" aria-label="First group">
                                 <a href="https://github.com/Grynome/Web_API-Service-" target="_blank"
-                                    rel="noopener noreferrer">
+                                    rel="noopener noreferrer" class="me-2">
                                     <button type="button" class="btn btn-icon-text btn-github">
                                         <i class="btn-icon-prepend" data-feather="github"></i>
                                         Github
+                                    </button>
+                                </a>
+                                <a href="https://wb-api.grynome.com/api/documentation" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <button type="button" class="btn btn-icon-text btn-outline-api-docs">
+                                        <i class="btn-icon-prepend" data-feather="shuffle"></i>
+                                        API Docs
                                     </button>
                                 </a>
                             </div>
